@@ -19,8 +19,8 @@
             </ul>*@
                 <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i> @UserManager.GetUserName(User)</button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <button asp-area="Identity" asp-controller="Manage" asp-action="Index" title="Manage" class="dropdown-item">Information</button>
-                    <button class="dropdown-item" type="submit">Sign Out</button>
+                    <a asp-area="Identity" asp-controller="Manage" asp-action="Index" title="Manage" class="dropdown-item">Information</a>
+                    <a class="dropdown-item">Sign Out</a>
                 </div>
         </form>
     </div>
@@ -34,7 +34,7 @@ else
             </a>
         </li>
     </ul>*@
-    <div class="btn-group">
+    <div class="btn-group mx-2">
         <a class="btn btn-sm btn-light" asp-area="Identity" asp-controller="Account" asp-action="Login">Sign In</a>
     </div>
 }

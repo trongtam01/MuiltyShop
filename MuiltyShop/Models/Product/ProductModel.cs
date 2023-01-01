@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
+using MuiltyShop.Models.Photo;
 
 namespace MuiltyShop.Models.Product
 {

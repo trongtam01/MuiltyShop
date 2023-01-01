@@ -1,5 +1,5 @@
-@using App.Components
-@model App.Components.CategoryProductSidebar.CategorySidebarData
+@using MuiltyShop.Components
+@model MuiltyShop.Components.CategoryProductSidebar.CategorySidebarData
 @{ 
     int level = Model.level;
 }
@@ -23,7 +23,7 @@
                 </a>
                 @if (category.CategoryChildren?.Count > 0)
                 {
-                        @await Component.InvokeAsync("App.Components.CategoryProductSidebar", 
+                    @await Component.InvokeAsync("MuiltyShop.Components.CategoryProductSidebar",
                             new CategoryProductSidebar.CategorySidebarData()
                             {
                                 Categories = category.CategoryChildren.ToList(),

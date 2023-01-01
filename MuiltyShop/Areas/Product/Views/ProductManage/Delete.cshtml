@@ -1,0 +1,27 @@
+﻿@using MuiltyShop.Services.Menu
+@inject AdminSidebarService _AdminSidebarService
+@model MuiltyShop.Models.Product.ProductModel
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>Có chắc chắn xóa sản phẩm?</p>
+<h4>@Model.Title</h4>
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ProductId" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index">Danh sách sản phẩm</a>
+    </form>
+</div>
+
+@{
+    _AdminSidebarService.SetActive("ProductManage", "Delete", "Product");
+}
+
+@section Sidebar
+    {
+    @Html.Raw(_AdminSidebarService.renderHtml())
+}

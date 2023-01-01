@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using MuiltyShop.Models.Product;
 
-namespace App.Components
+namespace MuiltyShop.Components
 {
     [ViewComponent]
     public class CategoryProductSidebar : ViewComponent {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MuiltyShop.Models.Contact;
+using MuiltyShop.Models.Photo;
 using MuiltyShop.Models.Product;
 using System.Reflection.Emit;
 

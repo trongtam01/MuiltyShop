@@ -140,13 +140,13 @@ namespace MuiltyShop
             app.UseSession();
 
             // /contents/1.jpg => Uploads/1.jpg
-            //app.UseStaticFiles(new StaticFileOptions()
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //        Path.Combine(Directory.GetCurrentDirectory(), "Uploads")
-            //    ),
-            //    RequestPath = "/contents"
-            //});
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "Uploads")
+                ),
+                RequestPath = "/contents"
+            });
 
             app.AddStatusCodePage(); // Tuy bien Response loi: 400 - 599
 
