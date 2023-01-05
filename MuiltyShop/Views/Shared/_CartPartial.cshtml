@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Newtonsoft.Json
+@using MuiltyShop.Areas.Product.Data
+
+@inject CartService _cartService;
+
+@{
+    var cart = _cartService.GetCartItems();
+    <a asp-route="cart">
+        <i class="fas fa-shopping-cart text-primary"></i>
+        @if (cart.Count() > 0)
+        {
+            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">@cart.Count</span>
+        }
+        else
+        {
+            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+        }
+    </a>
+}

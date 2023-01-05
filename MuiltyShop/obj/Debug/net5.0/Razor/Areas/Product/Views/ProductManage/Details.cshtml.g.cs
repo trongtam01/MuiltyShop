@@ -27,6 +27,20 @@ using MuiltyShop.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Product\Views\_ViewImports.cshtml"
+using MuiltyShop.Models.Product;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Product\Views\_ViewImports.cshtml"
+using MuiltyShop.Models.Product.Category;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Product\Views\ProductManage\Details.cshtml"
 using MuiltyShop.Services.Menu;
 
@@ -34,7 +48,7 @@ using MuiltyShop.Services.Menu;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9ac3887c3a5c27de6172c134640fded88eb18f20", @"/Areas/Product/Views/ProductManage/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f23fbefa54f0d8d14b6990cfa59901cda6be938d", @"/Areas/Product/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8afe94075790e42040eeb89cb65299fd8fff627d", @"/Areas/Product/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Product_Views_ProductManage_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<MuiltyShop.Models.Product.ProductModel>
     #nullable disable
@@ -180,7 +194,7 @@ using MuiltyShop.Services.Menu;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9ac3887c3a5c27de6172c134640fded88eb18f209270", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9ac3887c3a5c27de6172c134640fded88eb18f209705", async() => {
                 WriteLiteral("Sửa");
             }
             );
@@ -211,7 +225,7 @@ using MuiltyShop.Services.Menu;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(" |\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9ac3887c3a5c27de6172c134640fded88eb18f2011446", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9ac3887c3a5c27de6172c134640fded88eb18f2011881", async() => {
                 WriteLiteral("Các bài viết");
             }
             );

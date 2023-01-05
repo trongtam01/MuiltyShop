@@ -248,3 +248,16 @@ D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razo
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ProductManage\UploadPhoto.cshtml.g.cs
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\_ViewImports.cshtml.g.cs
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\_ViewStart.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\CategoryProduct\Create.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\CategoryProduct\Delete.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\CategoryProduct\Details.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\CategoryProduct\Edit.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\CategoryProduct\Index.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Views\Shared\_SummerNote.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ViewProduct\Index.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ViewProduct\_LayoutProduct.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ViewProduct\_ViewStart.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ViewProduct\Detail.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ViewProduct\Cart.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Views\Shared\_CartPartial.cshtml.g.cs
+D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ViewProduct\Checkout.cshtml.g.cs

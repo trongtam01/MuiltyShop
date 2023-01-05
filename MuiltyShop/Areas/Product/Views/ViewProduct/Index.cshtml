@@ -1,0 +1,71 @@
+﻿@model List<ProductModel>
+
+@using MuiltyShop.Components;
+@using MuiltyShop.Models.Product.Category;
+@{
+    List<CategoryProductModel> categories = ViewBag.categories as List<CategoryProductModel>;
+    CategoryProductModel category = ViewBag.category as CategoryProductModel;
+    ViewData["Title"] = (category != null) ? category.Title :
+                        "Bài viết trong tất cả các danh mục";
+}
+
+@*<h1>@ViewData["Title"]</h1>
+@if (category != null)
+{
+    <p>@category.Description</p>
+}
+else
+{
+    <p>Danh mục sản phẩm</p>
+}*@
+@foreach (var product in Model)
+{
+    var srcImg = "/contents/nophoto.png";
+    if (product.Photos.Any())
+    {
+        srcImg = $"/contents/Products/{product.Photos.FirstOrDefault().FileName}";
+    }
+    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+        <div class="product-item bg-light mb-4">
+            <div class="product-img position-relative overflow-hidden product-image-height">
+                <img class="img-fluid w-100" src="@srcImg" alt="">
+                <div class="product-action">
+                    <a class="btn btn-outline-dark btn-square" asp-action="AddToCart" asp-route-productid="@product.ProductId"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                    <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                    <a class="btn btn-outline-dark btn-square" asp-controller="ViewProduct" asp-action="Detail" asp-route-productslug="@product.Slug"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+            <div class="text-center py-4">
+                <a class="h6 text-decoration-none text-truncate" href="#">@product.Title</a>
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                    @product.ProductCategoryProducts.FirstOrDefault()?.Category.Title
+                </div>
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                    <h5>@product.Price</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                </div>
+                <div class="d-flex align-items-center justify-content-center mb-1">
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small>(99)</small>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Sidebar {
+    @await Component.InvokeAsync("MuiltyShop.Components.CategoryProductSidebar",
+        new CategoryProductSidebar.CategorySidebarData()
+        {
+            Categories = categories,
+            level = 0,
+            categoryslug = ViewBag.categoryslug
+        })
+}
+
+
+<partial name="_PagingXTL" model="@ViewBag.pagingModel" />

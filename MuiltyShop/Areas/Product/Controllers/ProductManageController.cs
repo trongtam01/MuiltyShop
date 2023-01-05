@@ -11,11 +11,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.Web.CodeGeneration;
 using MuiltyShop.Areas.Product.Models;
+using MuiltyShop.Controllers;
 using MuiltyShop.Models;
 using MuiltyShop.Models.Photo;
 using MuiltyShop.Models.Product;
+using MuiltyShop.Models.Product.Category;
 using MuiltyShop.Utilities;
+using System;
 
 namespace MuiltyShop.Areas.Product.Controllers
 {
@@ -26,11 +31,13 @@ namespace MuiltyShop.Areas.Product.Controllers
     {
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
+        private readonly ILogger<ProductManageController> _logger;
 
-        public ProductManageController(AppDbContext context, UserManager<AppUser> userManager)
+        public ProductManageController(AppDbContext context, UserManager<AppUser> userManager, ILogger<ProductManageController> logger)
         {
             _context = context;
             _userManager = userManager;
+            _logger = logger;
         }
 
         [TempData]
@@ -109,7 +116,7 @@ namespace MuiltyShop.Areas.Product.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Description,Slug,Content,Published,AuthorId,DateCreated,DateUpdated,Price")] CreateProductModel product)
+        public async Task<IActionResult> Create([Bind("Title,Description,Slug,Content,Published,CategoryIDs, Price")] CreateProductModel product)
         {
             var categories = await _context.CategoryProducts.ToListAsync();
             ViewData["categories"] = new MultiSelectList(categories, "Id", "Title");
@@ -194,7 +201,7 @@ namespace MuiltyShop.Areas.Product.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Title,Description,Slug,Content,Published,AuthorId,DateCreated,DateUpdated,Price")] CreateProductModel product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Title,Description,Slug,Content,Published,CategoryIDs, Price")] CreateProductModel product)
         {
             if (id != product.ProductId)
             {

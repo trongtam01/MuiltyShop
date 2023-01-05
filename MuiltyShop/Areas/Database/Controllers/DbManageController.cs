@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using MuiltyShop.Models.Product.Category;
 
 namespace MuiltyShop.Areas.Database.Controllers
 {

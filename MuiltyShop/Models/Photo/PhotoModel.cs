@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using MuiltyShop.Models.Product;
+using MuiltyShop.Models.Product.Category;
 
 namespace MuiltyShop.Models
 {

@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using MuiltyShop.Models.Checkout;
 using MuiltyShop.Models.Contact;
 using MuiltyShop.Models.Photo;
 using MuiltyShop.Models.Product;
+using MuiltyShop.Models.Product.Category;
+using MuiltyShop.Models.Product.Color;
+using MuiltyShop.Models.Product.Size;
 using System.Reflection.Emit;
 
 namespace MuiltyShop.Models
@@ -11,7 +16,7 @@ namespace MuiltyShop.Models
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
-
+           
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -51,6 +56,17 @@ namespace MuiltyShop.Models
                 entity.HasIndex(p => p.Slug)
                       .IsUnique();
             });
+
+            // Color
+            modelBuilder.Entity<ProductColorModel>(entity =>
+            {
+                entity.HasKey(c => new { c.ProductID, c.ColorID });
+            });
+            //SIze
+            modelBuilder.Entity<ProductSizeModel>(entity =>
+            {
+                entity.HasKey(c => new { c.ProductID, c.SizeID });
+            });
         }
         // Contact
         public DbSet<ContactModel> Contacts { get; set; }
@@ -63,5 +79,20 @@ namespace MuiltyShop.Models
         public DbSet<ProductCategoryProductModel> ProductCategoryProducts { get; set; }
         // Product Photo
         public DbSet<PhotoModel> Photos { get; set; }
+
+        // Color
+        public DbSet<ColorModel> Colors { get; set; }
+
+        public DbSet<ProductColorModel> ProductColors { get; set; }
+        // Size
+        public DbSet<SizeModel> Sizes { get; set; }
+
+        public DbSet<ProductSizeModel> ProductSizes { get; set; }
+
+        // Payment
+        public DbSet<PaymentModel> Payments { get; set; }
+
+        // Checkout
+        public DbSet<CheckoutModel> Checkouts { get; set; }
     }
 }

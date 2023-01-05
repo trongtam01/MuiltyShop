@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 using MuiltyShop.Models.Photo;
 
-namespace MuiltyShop.Models.Product
+namespace MuiltyShop.Models.Product.Category
 {
     [Table("CategoryProduct")]
     public class CategoryProductModel
@@ -45,7 +45,7 @@ namespace MuiltyShop.Models.Product
         public void ChildCategoryIDs(ICollection<CategoryProductModel> childcates, List<int> lists)
         {
             if (childcates == null)
-                childcates = this.CategoryChildren;
+                childcates = CategoryChildren;
 
             foreach (CategoryProductModel category in childcates)
             {
@@ -57,7 +57,7 @@ namespace MuiltyShop.Models.Product
         public List<CategoryProductModel> ListParents()
         {
             List<CategoryProductModel> li = new List<CategoryProductModel>();
-            var parent = this.ParentCategory;
+            var parent = ParentCategory;
             while (parent != null)
             {
                 li.Add(parent);

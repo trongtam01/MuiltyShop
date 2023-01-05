@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using MuiltyShop.Areas.Product.Controllers;
+using MuiltyShop.Areas.Product.Data;
 using MuiltyShop.ExtendMethods;
 using MuiltyShop.Models;
 using MuiltyShop.Services;
@@ -119,6 +121,10 @@ namespace MuiltyShop
                     builder.RequireRole(RoleName.Administrator);
                 });
             });
+
+
+            services.AddTransient<CartService>();
+            services.AddTransient<HearstService>();
 
             services.AddTransient<IActionContextAccessor, ActionContextAccessor>();
             services.AddTransient<AdminSidebarService>();

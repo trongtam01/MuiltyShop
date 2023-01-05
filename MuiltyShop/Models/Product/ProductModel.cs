@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 using MuiltyShop.Models.Photo;
+using MuiltyShop.Models.Product.Category;
 
 namespace MuiltyShop.Models.Product
 {
@@ -31,16 +32,12 @@ namespace MuiltyShop.Models.Product
 
         [Display(Name = "Xuất bản")]
         public bool Published { set; get; }
-
-
         // [Required]
         [Display(Name = "Người đăng")]
         public string AuthorId { set; get; }
         [ForeignKey("AuthorId")]
         [Display(Name = "Người đăng")]
         public AppUser Author { set; get; }
-
-
 
         [Display(Name = "Ngày tạo sản phẩm")]
         public DateTime DateCreated { set; get; }

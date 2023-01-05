@@ -222,6 +222,53 @@ namespace MuiltyShop.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("MuiltyShop.Models.Checkout.CheckoutModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PaymentID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("PaymentID");
+
+                    b.ToTable("Checkout");
+                });
+
+            modelBuilder.Entity("MuiltyShop.Models.Checkout.PaymentModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Payment");
+                });
+
             modelBuilder.Entity("MuiltyShop.Models.Contact.ContactModel", b =>
                 {
                     b.Property<int>("Id")
@@ -282,7 +329,7 @@ namespace MuiltyShop.Migrations
                     b.ToTable("Photo");
                 });
 
-            modelBuilder.Entity("MuiltyShop.Models.Product.CategoryProductModel", b =>
+            modelBuilder.Entity("MuiltyShop.Models.Product.Category.CategoryProductModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -315,7 +362,7 @@ namespace MuiltyShop.Migrations
                     b.ToTable("CategoryProduct");
                 });
 
-            modelBuilder.Entity("MuiltyShop.Models.Product.ProductCategoryProductModel", b =>
+            modelBuilder.Entity("MuiltyShop.Models.Product.Category.ProductCategoryProductModel", b =>
                 {
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
@@ -328,6 +375,43 @@ namespace MuiltyShop.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("ProductCategoryProduct");
+                });
+
+            modelBuilder.Entity("MuiltyShop.Models.Product.Color.ColorModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Color");
+                });
+
+            modelBuilder.Entity("MuiltyShop.Models.Product.Color.ProductColorModel", b =>
+                {
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColorID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SizeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductID", "ColorID");
+
+                    b.HasIndex("SizeID");
+
+                    b.ToTable("ProductColor");
                 });
 
             modelBuilder.Entity("MuiltyShop.Models.Product.ProductModel", b =>
@@ -376,6 +460,40 @@ namespace MuiltyShop.Migrations
                         .HasFilter("[Slug] IS NOT NULL");
 
                     b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("MuiltyShop.Models.Product.Size.ProductSizeModel", b =>
+                {
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductID", "SizeID");
+
+                    b.HasIndex("SizeID");
+
+                    b.ToTable("ProductSize");
+                });
+
+            modelBuilder.Entity("MuiltyShop.Models.Product.Size.SizeModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Size");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -429,9 +547,26 @@ namespace MuiltyShop.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MuiltyShop.Models.Checkout.CheckoutModel", b =>
+                {
+                    b.HasOne("MuiltyShop.Models.AppUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("MuiltyShop.Models.Checkout.PaymentModel", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Payment");
+                });
+
             modelBuilder.Entity("MuiltyShop.Models.PhotoModel", b =>
                 {
-                    b.HasOne("MuiltyShop.Models.Product.CategoryProductModel", "CategoryProduct")
+                    b.HasOne("MuiltyShop.Models.Product.Category.CategoryProductModel", "CategoryProduct")
                         .WithMany("Photos")
                         .HasForeignKey("CategoryProductId");
 
@@ -446,18 +581,18 @@ namespace MuiltyShop.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("MuiltyShop.Models.Product.CategoryProductModel", b =>
+            modelBuilder.Entity("MuiltyShop.Models.Product.Category.CategoryProductModel", b =>
                 {
-                    b.HasOne("MuiltyShop.Models.Product.CategoryProductModel", "ParentCategory")
+                    b.HasOne("MuiltyShop.Models.Product.Category.CategoryProductModel", "ParentCategory")
                         .WithMany("CategoryChildren")
                         .HasForeignKey("ParentCategoryId");
 
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("MuiltyShop.Models.Product.ProductCategoryProductModel", b =>
+            modelBuilder.Entity("MuiltyShop.Models.Product.Category.ProductCategoryProductModel", b =>
                 {
-                    b.HasOne("MuiltyShop.Models.Product.CategoryProductModel", "Category")
+                    b.HasOne("MuiltyShop.Models.Product.Category.CategoryProductModel", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -474,6 +609,23 @@ namespace MuiltyShop.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("MuiltyShop.Models.Product.Color.ProductColorModel", b =>
+                {
+                    b.HasOne("MuiltyShop.Models.Product.ProductModel", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MuiltyShop.Models.Product.Color.ColorModel", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeID");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
             modelBuilder.Entity("MuiltyShop.Models.Product.ProductModel", b =>
                 {
                     b.HasOne("MuiltyShop.Models.AppUser", "Author")
@@ -483,7 +635,26 @@ namespace MuiltyShop.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("MuiltyShop.Models.Product.CategoryProductModel", b =>
+            modelBuilder.Entity("MuiltyShop.Models.Product.Size.ProductSizeModel", b =>
+                {
+                    b.HasOne("MuiltyShop.Models.Product.ProductModel", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MuiltyShop.Models.Product.Size.SizeModel", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("MuiltyShop.Models.Product.Category.CategoryProductModel", b =>
                 {
                     b.Navigation("CategoryChildren");
 

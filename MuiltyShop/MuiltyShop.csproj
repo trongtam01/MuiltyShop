@@ -35,9 +35,7 @@
     <Folder Include="Areas\Database\Models\" />
     <Folder Include="Areas\Files\Data\" />
     <Folder Include="Areas\Files\Models\" />
-    <Folder Include="Areas\Product\Data\" />
     <Folder Include="Uploads\Products\" />
-    <Folder Include="Views\Shared\Partial\" />
   </ItemGroup>
 
 </Project>

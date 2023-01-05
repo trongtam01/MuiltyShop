@@ -1,13 +1,12 @@
-
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using MuiltyShop.Models.Product;
+using MuiltyShop.Models.Product.Category;
 
 namespace MuiltyShop.Components
 {
     [ViewComponent]
-    public class CategoryProductSidebar : ViewComponent {
-
+    public class CategoryProductSidebar : ViewComponent 
+    {
         public class CategorySidebarData 
         {
             public List<CategoryProductModel> Categories { get; set; }

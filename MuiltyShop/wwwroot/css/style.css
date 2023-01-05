@@ -9670,12 +9670,18 @@ a.text-dark:hover, a.text-dark:focus {
   transition: .3s .15s;
 }
 
-.product-item .product-img img {
-  transition: .5s;
-}
-
 .product-item:hover .product-img img {
   transform: scale(1.2);
+}
+
+.product-img.position-relative.overflow-hidden.product-image-height {
+    height: 250px !important;
+}
+
+.product-item .product-img img {
+    transition: .5s;
+    height: 100% !important;
+    object-fit: fill !important;
 }
 
 .product-item .btn:hover {
@@ -9710,3 +9716,4 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translateY(-15px);
   }
 }
+
