@@ -11,6 +11,8 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using MuiltyShop.Models.Product.Category;
+using MuiltyShop.Models.Product.Color;
+using MuiltyShop.Models.Product.Size;
 
 namespace MuiltyShop.Areas.Database.Controllers
 {
@@ -109,9 +111,7 @@ namespace MuiltyShop.Areas.Database.Controllers
             SeedProductCategory();
 
             StatusMessage = "Vừa seed Database";
-            return RedirectToAction("Index");
-
-
+            return RedirectToAction(nameof(Index));
         }
 
         private void SeedProductCategory()
@@ -119,9 +119,13 @@ namespace MuiltyShop.Areas.Database.Controllers
 
             _dbContext.CategoryProducts.RemoveRange(_dbContext.CategoryProducts.Where(c => c.Description.Contains("[fakeData]")));
             _dbContext.Products.RemoveRange(_dbContext.Products.Where(p => p.Content.Contains("[fakeData]")));
+            _dbContext.Colors.RemoveRange(_dbContext.Colors.Where(c => c.Description.Contains("[fakeData]")));
+            _dbContext.Sizes.RemoveRange(_dbContext.Sizes.Where(c => c.Description.Contains("[fakeData]")));
+
 
             _dbContext.SaveChanges();
 
+            #region Category
             var fakerCategory = new Faker<CategoryProductModel>();
             int cm = 1;
             fakerCategory.RuleFor(c => c.Title, fk => $"Nhom SP{cm++} " + fk.Lorem.Sentence(1, 2).Trim('.'));
@@ -145,10 +149,10 @@ namespace MuiltyShop.Areas.Database.Controllers
 
             var categories = new CategoryProductModel[] { cate1, cate2, cate12, cate11, cate21, cate211 };
             _dbContext.CategoryProducts.AddRange(categories);
+            #endregion
 
 
-
-            // POST
+            #region Product
             var rCateIndex = new Random();
             int bv = 1;
 
@@ -181,7 +185,48 @@ namespace MuiltyShop.Areas.Database.Controllers
 
             _dbContext.AddRange(products);
             _dbContext.AddRange(product_categories);
-            // END POST
+            #endregion
+
+            #region Colors
+            var fakerColor = new Faker<ColorModel>();
+            fakerColor.RuleFor(c => c.Description, fk => fk.Lorem.Sentences(5) + "[fakeData]");
+            var color1 = fakerColor.Generate();
+            var color2 = fakerColor.Generate();
+            var color3 = fakerColor.Generate();
+            var color4 = fakerColor.Generate();
+            var color5 = fakerColor.Generate();
+
+
+            color1.Title = "Black";
+            color2.Title = "White";
+            color3.Title = "Red";
+            color4.Title = "Blue";
+            color5.Title = "Green";
+
+            var colors = new ColorModel[] { color1, color2, color3, color4, color5 };
+            _dbContext.Colors.AddRange(colors);
+
+            #endregion
+
+            #region Size
+            var fakerSize = new Faker<SizeModel>();
+            fakerSize.RuleFor(c => c.Description, fk => fk.Lorem.Sentences(5) + "[fakeData]");
+            var size1 = fakerSize.Generate();
+            var size2 = fakerSize.Generate();
+            var size3 = fakerSize.Generate();
+            var size4 = fakerSize.Generate();
+            var size5 = fakerSize.Generate();
+
+
+            size1.Title = "XS";
+            size2.Title = "S";
+            size3.Title = "M";
+            size4.Title = "L";
+            size5.Title = "XL";
+
+            var sizes = new SizeModel[] { size1, size2, size3, size4, size5 };
+            _dbContext.Sizes.AddRange(sizes);
+            #endregion
 
             _dbContext.SaveChanges();
         }

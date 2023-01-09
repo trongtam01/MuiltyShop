@@ -24,7 +24,7 @@
                 @if (category.CategoryChildren?.Count > 0)
                 {
                     @await Component.InvokeAsync("MuiltyShop.Components.CategoryProductSidebar",
-                            new CategoryProductSidebar.CategorySidebarData()
+        new CategoryProductSidebar.CategorySidebarData()
                             {
                                 Categories = category.CategoryChildren.ToList(),
                                 level = level + 1,

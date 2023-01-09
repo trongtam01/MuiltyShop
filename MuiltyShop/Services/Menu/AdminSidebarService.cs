@@ -86,14 +86,7 @@ namespace MuiltyShop.Services.Menu
                                 Action = "Index",
                                 Area = "Product",
                                 Title = "Các chuyên mục"
-                        },
-                         new SidebarItem() {
-                                Type = SidebarItemType.NavItem,
-                                Controller = "CategoryProduct",
-                                Action = "Create",
-                                Area = "Product",
-                                Title = "Tạo chuyên mục"
-                        },
+                        },      
                         new SidebarItem() {
                                 Type = SidebarItemType.NavItem,
                                 Controller = "ProductManage",
@@ -103,10 +96,17 @@ namespace MuiltyShop.Services.Menu
                         },
                         new SidebarItem() {
                                 Type = SidebarItemType.NavItem,
-                                Controller = "ProductManage",
-                                Action = "Create",
+                                Controller = "Color",
+                                Action = "Index",
                                 Area = "Product",
-                                Title = "Tạo sản phẩm"
+                                Title = "Các màu sắc"
+                        },
+                        new SidebarItem() {
+                                Type = SidebarItemType.NavItem,
+                                Controller = "Size",
+                                Action = "Index",
+                                Area = "Product",
+                                Title = "Các kích cỡ"
                         },
                     },
             });

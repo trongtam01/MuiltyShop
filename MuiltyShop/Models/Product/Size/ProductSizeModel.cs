@@ -14,5 +14,6 @@ namespace MuiltyShop.Models.Product.Size
 
         [ForeignKey("SizeID")]
         public SizeModel Size { set; get; }
+
     }
 }
