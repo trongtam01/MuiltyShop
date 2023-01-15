@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\MuiltyShop",
-    "\\MuiltyShop\\Areas"
+    "\\MuiltyShop\\Areas",
+    "\\MuiltyShop\\Views",
+    "\\MuiltyShop\\wwwroot",
+    "\\MuiltyShop\\wwwroot\\css"
   ],
-  "SelectedNode": "\\MuiltyShop\\Startup.cs",
+  "SelectedNode": "\\MuiltyShop.sln",
   "PreviewInSolutionExplorer": false
 }

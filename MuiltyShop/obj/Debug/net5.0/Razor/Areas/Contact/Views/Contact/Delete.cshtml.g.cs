@@ -27,6 +27,20 @@ using MuiltyShop.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Contact\Views\_ViewImports.cshtml"
+using MuiltyShop.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Contact\Views\_ViewImports.cshtml"
+using MuiltyShop.Models.Product.Category;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Contact\Views\Contact\Delete.cshtml"
 using MuiltyShop.Services.Menu;
 
@@ -34,7 +48,7 @@ using MuiltyShop.Services.Menu;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d7f4f1f0e3412af67805f80e156845de5e289a0a", @"/Areas/Contact/Views/Contact/Delete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f23fbefa54f0d8d14b6990cfa59901cda6be938d", @"/Areas/Contact/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb7870e8a4fe530379c35af3fda7c0e21f74cb39", @"/Areas/Contact/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Contact_Views_Contact_Delete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<MuiltyShop.Models.Contact.ContactModel>
     #nullable disable
@@ -167,9 +181,9 @@ Write(ViewData["Title"]);
 #line hidden
 #nullable disable
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7f4f1f0e3412af67805f80e156845de5e289a0a8823", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7f4f1f0e3412af67805f80e156845de5e289a0a9254", async() => {
                 WriteLiteral("\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d7f4f1f0e3412af67805f80e156845de5e289a0a9089", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d7f4f1f0e3412af67805f80e156845de5e289a0a9520", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -192,7 +206,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n        <input type=\"submit\" value=\"Xóa\" class=\"btn btn-danger\" /> |\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7f4f1f0e3412af67805f80e156845de5e289a0a10893", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7f4f1f0e3412af67805f80e156845de5e289a0a11324", async() => {
                     WriteLiteral("Danh sách liên hệ");
                 }
                 );

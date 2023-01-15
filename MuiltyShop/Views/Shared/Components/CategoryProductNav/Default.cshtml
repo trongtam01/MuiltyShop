@@ -1,0 +1,27 @@
+@using MuiltyShop.Components
+@model MuiltyShop.Components.CategoryProductNav.CategoryNavData
+@{ 
+    int level = Model.level;
+}
+@if (Model.Categories.Count > 0)
+{
+    @if (level == 0)
+    {
+        <a asp-controller="ViewProduct" asp-action="Index" asp-route-categoryslug="" asp-area="Product" class="nav-item nav-link">
+            Tất cả chuyên mục
+        </a>
+    }
+    @foreach (var category in Model.Categories)
+    {
+        <a asp-controller="ViewProduct" asp-action="Index" asp-route-categoryslug="@category.Slug" asp-area="Product" class="nav-item nav-link">@category.Title</a>
+        @if (category.CategoryChildren?.Count > 0)
+        {
+            @await Component.InvokeAsync("MuiltyShop.Components.CategoryProductNav", new CategoryProductNav.CategoryNavData()
+                    {
+                        Categories = category.CategoryChildren.ToList(),
+                        level = level + 1,
+                        categoryslug = ViewBag.categoryslug
+                    })
+        }
+    }
+}

@@ -10,6 +10,6 @@ namespace MuiltyShop.Models.Photo
         [DataType(DataType.Upload)]
         [FileExtensions(Extensions = "png, jpg, jpeg, gif")]
         [Display(Name = "Chọn file update")]
-        public IFormFile FileUpload { get; set; }
+        public IFormFile FileUpload { get; set; } 
     }
 }

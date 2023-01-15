@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MuiltyShop.Models;
 using MuiltyShop.Models.Contact;
+using MuiltyShop.Models.Product.Category;
 
 namespace MuiltyShop.Areas.Contact.Controllers
 {
@@ -55,6 +56,28 @@ namespace MuiltyShop.Areas.Contact.Controllers
         [AllowAnonymous]
         public IActionResult SendContact()
         {
+            var categories = _context.CategoryProducts
+                .Include(c => c.CategoryChildren)
+                .AsEnumerable()
+                .Where(c => c.ParentCategory == null)
+                .ToList();
+
+            ViewBag.categories = categories;
+
+            var product = _context.Products
+                               .Include(p => p.Author)
+                               .Include(p => p.Photos)
+                               .Include(p => p.ProductCategoryProducts)
+                               .ThenInclude(pc => pc.Category)
+                               .FirstOrDefault();
+
+            if (product == null)
+            {
+                return NotFound("Không thấy bài viết");
+            }
+
+            CategoryProductModel category = product.ProductCategoryProducts.FirstOrDefault()?.Category;
+            ViewBag.category = category;
             return View();
         }
 
@@ -63,6 +86,28 @@ namespace MuiltyShop.Areas.Contact.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SendContact([Bind("FullName,Email,Message,Phone")] ContactModel contact)
         {
+            var categories = _context.CategoryProducts
+                .Include(c => c.CategoryChildren)
+                .AsEnumerable()
+                .Where(c => c.ParentCategory == null)
+                .ToList();
+
+            ViewBag.categories = categories;
+
+            var product = _context.Products
+                               .Include(p => p.Author)
+                               .Include(p => p.Photos)
+                               .Include(p => p.ProductCategoryProducts)
+                               .ThenInclude(pc => pc.Category)
+                               .FirstOrDefault();
+
+            if (product == null)
+            {
+                return NotFound("Không thấy bài viết");
+            }
+
+            CategoryProductModel category = product.ProductCategoryProducts.FirstOrDefault()?.Category;
+            ViewBag.category = category;
             if (ModelState.IsValid)
             {
 

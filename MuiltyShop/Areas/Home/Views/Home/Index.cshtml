@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    List<CategoryProductModel> categories = ViewBag.categories as List<CategoryProductModel>;
+    CategoryProductModel category = ViewBag.category as CategoryProductModel;
 }
+
 
 <partial name="_CarouselPartial" />
 
@@ -34,7 +37,6 @@
     </div>
 </div>
 <!-- Featured End -->
-
 <!-- Vendor Start -->
 <div class="container-fluid py-5">
     <div class="row px-xl-5">
@@ -57,7 +59,7 @@
                 </div>
                 <div class="bg-light p-4">
                     <img src="/contents/Vendor/vendor-6.jpg" alt="">
-                </div>ss
+                </div>
                 <div class="bg-light p-4">
                     <img src="/contents/Vendor/vendor-7.jpg" alt="">
                 </div>
@@ -69,3 +71,12 @@
     </div>
 </div>
 <!-- Vendor End -->
+@section CategoryNav {
+    @await Component.InvokeAsync("MuiltyShop.Components.CategoryProductNav",
+        new CategoryProductNav.CategoryNavData()
+        {
+            Categories = categories,
+            level = 0,
+            categoryslug = ViewBag.categoryslug
+        })
+}

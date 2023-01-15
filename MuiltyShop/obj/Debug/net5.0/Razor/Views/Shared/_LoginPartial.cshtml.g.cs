@@ -27,6 +27,13 @@ using MuiltyShop.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Views\_ViewImports.cshtml"
+using MuiltyShop.Models.Product.Category;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Views\Shared\_LoginPartial.cshtml"
 using Microsoft.AspNetCore.Identity;
 
@@ -34,7 +41,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"df52e4cf54c158eb754e41c297cb88805e31a1b4", @"/Views/Shared/_LoginPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f23fbefa54f0d8d14b6990cfa59901cda6be938d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f1aa5f571d911d52215de61bd809e948680ff7c5", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__LoginPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -88,7 +95,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"btn-group\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df52e4cf54c158eb754e41c297cb88805e31a1b47854", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df52e4cf54c158eb754e41c297cb88805e31a1b48062", async() => {
                 WriteLiteral("\r\n");
                 WriteLiteral("                <button type=\"button\" class=\"btn btn-sm btn-light dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fas fa-user\"></i> ");
 #nullable restore
@@ -99,7 +106,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
                 WriteLiteral("</button>\r\n                <div class=\"dropdown-menu dropdown-menu-right\">\r\n                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df52e4cf54c158eb754e41c297cb88805e31a1b48768", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df52e4cf54c158eb754e41c297cb88805e31a1b48976", async() => {
                     WriteLiteral("Information");
                 }
                 );
@@ -156,7 +163,7 @@ else
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"btn-group mx-2\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df52e4cf54c158eb754e41c297cb88805e31a1b412909", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df52e4cf54c158eb754e41c297cb88805e31a1b413117", async() => {
                 WriteLiteral("Sign In");
             }
             );

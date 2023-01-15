@@ -27,6 +27,13 @@ using MuiltyShop.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Views\_ViewImports.cshtml"
+using MuiltyShop.Models.Product.Category;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Views\Shared\_CartPartial.cshtml"
 using Microsoft.AspNetCore.Http;
 
@@ -48,7 +55,7 @@ using MuiltyShop.Areas.Product.Data;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5deb7c0b3761a0a5b904e28abd118f5416291269", @"/Views/Shared/_CartPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f23fbefa54f0d8d14b6990cfa59901cda6be938d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f1aa5f571d911d52215de61bd809e948680ff7c5", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__CartPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -89,7 +96,7 @@ using MuiltyShop.Areas.Product.Data;
 #line hidden
 #nullable disable
             WriteLiteral("    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5deb7c0b3761a0a5b904e28abd118f54162912694368", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5deb7c0b3761a0a5b904e28abd118f54162912694576", async() => {
                 WriteLiteral("\r\n        <i class=\"fas fa-shopping-cart text-primary\"></i>\r\n");
 #nullable restore
 #line 11 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Views\Shared\_CartPartial.cshtml"

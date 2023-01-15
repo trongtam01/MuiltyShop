@@ -26,8 +26,15 @@ using MuiltyShop.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Views\_ViewImports.cshtml"
+using MuiltyShop.Models.Product.Category;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8c0edce7def28128f7bc3dbe7fc15fa668d2eec9", @"/Views/Shared/_PagingXTL.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f23fbefa54f0d8d14b6990cfa59901cda6be938d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f1aa5f571d911d52215de61bd809e948680ff7c5", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__PagingXTL : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<MuiltyShop.Models.PagingModel>
     #nullable disable

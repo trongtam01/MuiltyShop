@@ -1,7 +1,9 @@
-﻿@using MuiltyShop.Models.Product.Category;
+﻿@using MuiltyShop.Components;
+@using MuiltyShop.Models.Product.Category;
 @{
     Layout = "_Layout";
     CategoryProductModel category = ViewBag.category as CategoryProductModel;
+    List<CategoryProductModel> categories = ViewBag.categories as List<CategoryProductModel>;
     ViewData["Title"] = (category != null) ? category.Title :
                         "Bài viết trong tất cả các danh mục";
 }
@@ -65,3 +67,13 @@
         </div>
     </div>
 </div>
+
+@section CategoryNav {
+    @await Component.InvokeAsync("MuiltyShop.Components.CategoryProductNav",
+        new CategoryProductNav.CategoryNavData()
+        {
+            Categories = categories,
+            level = 0,
+            categoryslug = ViewBag.categoryslug
+        })
+}

@@ -27,6 +27,20 @@ using MuiltyShop.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Contact\Views\_ViewImports.cshtml"
+using MuiltyShop.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Contact\Views\_ViewImports.cshtml"
+using MuiltyShop.Models.Product.Category;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Contact\Views\Contact\Details.cshtml"
 using MuiltyShop.Services.Menu;
 
@@ -34,7 +48,7 @@ using MuiltyShop.Services.Menu;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1cc15b11606c2bbfb5bed63bdf75e5025bdb4021", @"/Areas/Contact/Views/Contact/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f23fbefa54f0d8d14b6990cfa59901cda6be938d", @"/Areas/Contact/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb7870e8a4fe530379c35af3fda7c0e21f74cb39", @"/Areas/Contact/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Contact_Views_Contact_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<MuiltyShop.Models.Contact.ContactModel>
     #nullable disable
@@ -155,7 +169,7 @@ using MuiltyShop.Services.Menu;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1cc15b11606c2bbfb5bed63bdf75e5025bdb40217609", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1cc15b11606c2bbfb5bed63bdf75e5025bdb40218040", async() => {
                 WriteLiteral("Danh sách liên hệ");
             }
             );

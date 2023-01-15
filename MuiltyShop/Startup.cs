@@ -141,6 +141,10 @@ namespace MuiltyShop
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseHttpsRedirection();
+
+
             app.UseStaticFiles();
 
             app.UseSession();
@@ -165,9 +169,18 @@ namespace MuiltyShop
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
+                endpoints.MapControllers();
+
+                endpoints.MapAreaControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}",
+                    areaName: "Home"
+                );
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }
