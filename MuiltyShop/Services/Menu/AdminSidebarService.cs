@@ -110,7 +110,16 @@ namespace MuiltyShop.Services.Menu
                         },
                     },
             });
-
+            Items.Add(new SidebarItem()
+            {
+                Type = SidebarItemType.NavItem,
+                Controller = "FileManager",
+                Action = "Index",
+                Area = "Files",
+                Title = "Quản lý ảnh",
+                AwesomeIcon = "fas fa-images",
+                target = "_blank",
+            });
 
         }
 

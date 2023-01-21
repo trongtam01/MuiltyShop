@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
             <input type="hidden" asp-for="ProductId" />
             <div class="form-group">
@@ -26,7 +26,16 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
-            <input class="collapse"
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <img src="/contents/Products/@Model.Image" width="100" alt="Alternate Text" />
+            </div>
+
+            @*<input class="collapse"
                    type="file"
                    id="selectfileupload"
                    onchange="AutoUploadPhoto()" />
@@ -34,7 +43,7 @@
             <span class="btn btn-primary" onclick="ClickButtoUpload()">Uploads</span>
 
             <div id="box-photo-upload" class="d-flex flex-wrap photo-upload" data-id="@Model.ProductId">
-            </div>
+            </div>*@
 
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>

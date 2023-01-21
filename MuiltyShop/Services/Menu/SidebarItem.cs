@@ -19,6 +19,7 @@ namespace MuiltyShop.Services.Menu
         public string Action { get; set; }
         public string Area { get; set; }
         public string AwesomeIcon { get; set; }
+        public string target { get; set; }
         public List<SidebarItem> Items { get; set; }
         public string collapseID { get; set; }
         public string GetLink(IUrlHelper urlHelper)
@@ -35,7 +36,7 @@ namespace MuiltyShop.Services.Menu
             }
             else if (Type == SidebarItemType.Heading)
             {
-                html.Append(@$"<div class=""sidebar-heading"">
+                html.Append(@$"<div target=""{target}"" class=""sidebar-heading"">
                                 {Title}
                                </div>");
             }
@@ -53,7 +54,7 @@ namespace MuiltyShop.Services.Menu
 
                     html.Append(@$"
                         <li class=""{cssClass}"">
-                            <a class=""nav-link"" href=""{url}"">
+                            <a target=""{target}"" class=""nav-link"" href=""{url}"">
                                 {icon}
                                 <span>{Title}</span></a>
                          </li>                    
@@ -85,7 +86,7 @@ namespace MuiltyShop.Services.Menu
 
                     html.Append(@$"
                     
-                        <li class=""{cssClass}"">
+                        <li target=""{target}"" class=""{cssClass}"">
                             <a class=""nav-link collapsed"" href=""#"" data-toggle=""collapse"" data-target=""#{collapseID}""
                                 aria-expanded=""true"" aria-controls=""{collapseID}"">
                                 {icon}

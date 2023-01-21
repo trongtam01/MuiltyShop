@@ -9,6 +9,7 @@ using MuiltyShop.Areas.Product.Data;
 using System.Linq;
 using MuiltyShop.Areas.Product.Models;
 using MuiltyShop.Models.Product.Category;
+using System.Threading.Tasks;
 
 namespace MuiltyShop.Areas.Product.Controllers
 {
@@ -166,6 +167,7 @@ namespace MuiltyShop.Areas.Product.Controllers
                 cart.Add(new CartItem() { quantity = 1, product = product });
             }
 
+
             // Lưu cart vào Session
             _cartService.SaveCartSession(cart);
             // Chuyển đến trang hiện thị Cart
@@ -205,6 +207,10 @@ namespace MuiltyShop.Areas.Product.Controllers
                 // Đã tồn tại, tăng thêm 1
                 cartitem.quantity = quantity;
             }
+            if (cartitem.quantity == 0)
+            {
+                cart.Remove(cartitem);
+            }
             _cartService.SaveCartSession(cart);
             // Trả về mã thành công (không có nội dung gì - chỉ để Ajax gọi)
             return Ok();
@@ -213,10 +219,19 @@ namespace MuiltyShop.Areas.Product.Controllers
         public IActionResult Checkout()
         {
             var cart = _cartService.GetCartItems();
-
-            //_cartService.ClearCart();
+            var payment = _context.Payments;
+            ViewBag.payment = payment;
 
             return View(cart);
+        }
+
+        [Route("sendcheckout", Name = "sendcheckout")]
+        public IActionResult SendCheckout()
+        {
+            var cart = _cartService.GetCartItems();
+
+            _cartService.ClearCart();
+            return RedirectToAction(nameof(Cart));
         }
 
         /// Thêm sản phẩm vào hearst

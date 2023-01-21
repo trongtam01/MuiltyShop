@@ -13,11 +13,12 @@ using System.Linq;
 using MuiltyShop.Models.Product.Category;
 using MuiltyShop.Models.Product.Color;
 using MuiltyShop.Models.Product.Size;
+using MuiltyShop.Models.Checkout;
 
 namespace MuiltyShop.Areas.Database.Controllers
 {
     [Area("Database")]
-    [Route("/database-manage/[action]")]
+    [Route("/database-manage/[action]")]    
     public class DbManageController : Controller
     {
         private readonly AppDbContext _dbContext;
@@ -226,6 +227,22 @@ namespace MuiltyShop.Areas.Database.Controllers
 
             var sizes = new SizeModel[] { size1, size2, size3, size4, size5 };
             _dbContext.Sizes.AddRange(sizes);
+            #endregion
+
+            #region payment
+            var fakerPayment = new Faker<PaymentModel>();
+            fakerPayment.RuleFor(c => c.Description, fk => fk.Lorem.Sentences(5) + "[fakeData]");
+            var payment1 = fakerPayment.Generate();
+            var payment2 = fakerPayment.Generate();
+            var payment3 = fakerPayment.Generate();
+
+            payment1.Title = "Paypal";
+            payment2.Title = "Direct Check";
+            payment3.Title = "Bank Transfer";
+ 
+
+            var payments = new PaymentModel[] { payment1, payment2, payment3 };
+            _dbContext.Payments.AddRange(payments);
             #endregion
 
             _dbContext.SaveChanges();

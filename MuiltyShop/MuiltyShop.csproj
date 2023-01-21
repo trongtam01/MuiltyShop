@@ -83,7 +83,6 @@
     <Folder Include="Areas\Files\Models\" />
     <Folder Include="Areas\Home\Data\" />
     <Folder Include="Areas\Home\Models\" />
-    <Folder Include="Uploads\Products\" />
   </ItemGroup>
 
 </Project>

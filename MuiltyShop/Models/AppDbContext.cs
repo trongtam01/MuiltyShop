@@ -58,6 +58,7 @@ namespace MuiltyShop.Models
             });
 
             // Color
+            /* Creating a composite key for the ProductColorModel. */
             modelBuilder.Entity<ProductColorModel>(entity =>
             {
                 entity.HasKey(c => new { c.ProductID, c.ColorID });

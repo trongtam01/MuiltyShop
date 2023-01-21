@@ -24,7 +24,7 @@ namespace MuiltyShop.Areas.Home.Controllers
             _logger = logger;
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var categories = _context.CategoryProducts
                              .Include(c => c.CategoryChildren)
@@ -36,19 +36,18 @@ namespace MuiltyShop.Areas.Home.Controllers
 
             var product = _context.Products
                                .Include(p => p.Author)
-                               .Include(p => p.Photos)
                                .Include(p => p.ProductCategoryProducts)
                                .ThenInclude(pc => pc.Category)
-                               .FirstOrDefault();
+                               .OrderByDescending(d => d.DateUpdated);
 
             if (product == null)
             {
                 return NotFound("Không thấy bài viết");
             }
 
-            CategoryProductModel category = product.ProductCategoryProducts.FirstOrDefault()?.Category;
+            CategoryProductModel category = product.FirstOrDefault()?.ProductCategoryProducts.FirstOrDefault()?.Category;
             ViewBag.category = category;
-            return View();
+            return View(product.ToList());
         }
     }
 }

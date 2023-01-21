@@ -259,7 +259,6 @@ D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razo
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ViewProduct\Cart.cshtml.g.cs
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Views\Shared\_CartPartial.cshtml.g.cs
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\ViewProduct\Checkout.cshtml.g.cs
-D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Views\Shared\_CarouselPartial.cshtml.g.cs
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\Color\Create.cshtml.g.cs
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\Color\Delete.cshtml.g.cs
 D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\obj\Debug\net5.0\Razor\Areas\Product\Views\Color\Details.cshtml.g.cs

@@ -35,13 +35,20 @@ using MuiltyShop.Components;
 #nullable disable
 #nullable restore
 #line 4 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Home\Views\_ViewImports.cshtml"
+using MuiltyShop.Models.Product;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\wordspace\languages\sharp\project\MuiltyShop\MuiltyShop\Areas\Home\Views\_ViewImports.cshtml"
 using MuiltyShop.Models.Product.Category;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Areas/Home/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb7870e8a4fe530379c35af3fda7c0e21f74cb39", @"/Areas/Home/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"297d24c24731505095748a227960ac63fb5f182b", @"/Areas/Home/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Home_Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable

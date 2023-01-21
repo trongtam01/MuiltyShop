@@ -20,6 +20,7 @@ using MuiltyShop.Models.Product;
 using MuiltyShop.Models.Product.Category;
 using MuiltyShop.Utilities;
 using System;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MuiltyShop.Areas.Product.Controllers
 {
@@ -31,54 +32,69 @@ namespace MuiltyShop.Areas.Product.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
         private readonly ILogger<ProductManageController> _logger;
+        private IHostingEnvironment _host;
 
-        public ProductManageController(AppDbContext context, UserManager<AppUser> userManager, ILogger<ProductManageController> logger)
+        public ProductManageController(AppDbContext context, UserManager<AppUser> userManager, ILogger<ProductManageController> logger, IHostingEnvironment host)
         {
             _context = context;
             _userManager = userManager;
             _logger = logger;
+            _host = host;
         }
 
         [TempData]
         public string StatusMessage { get; set; }
 
         // GET: Product/ProductManage
-        public async Task<IActionResult> Index([FromQuery(Name = "p")] int currentPage, int pagesize)
+        public async Task<IActionResult> Index()
         {
             var products = _context.Products
                         .Include(p => p.Author)
+                        .Include(p => p.ProductCategoryProducts)
+                        .ThenInclude(pc => pc.Category)
                         .OrderByDescending(p => p.DateUpdated);
 
             int totalPosts = await products.CountAsync();
-            if (pagesize <= 0) pagesize = 10;
-            int countPages = (int)Math.Ceiling((double)totalPosts / pagesize);
+            //if (pagesize <= 0) pagesize = 10;
+            //int countPages = (int)Math.Ceiling((double)totalPosts / pagesize);
 
-            if (currentPage > countPages) currentPage = countPages;
-            if (currentPage < 1) currentPage = 1;
+            //if (currentPage > countPages) currentPage = countPages;
+            //if (currentPage < 1) currentPage = 1;
 
-            var pagingModel = new PagingModel()
-            {
-                countpages = countPages,
-                currentpage = currentPage,
-                generateUrl = (pageNumber) => Url.Action("Index", new
-                {
-                    p = pageNumber,
-                    pagesize = pagesize
-                })
-            };
+            //var pagingModel = new PagingModel()
+            //{
+            //    countpages = countPages,
+            //    currentpage = currentPage,
+            //    generateUrl = (pageNumber) => Url.Action("Index", new
+            //    {
+            //        p = pageNumber,
+            //        pagesize = pagesize
+            //    })
+            //};
 
-            ViewBag.pagingModel = pagingModel;
+            //ViewBag.pagingModel = pagingModel;
             ViewBag.totalPosts = totalPosts;
 
-            ViewBag.postIndex = (currentPage - 1) * pagesize;
+            //ViewBag.postIndex = (currentPage - 1) * pagesize;
 
-            var productInPage = await products.Skip((currentPage - 1) * pagesize)
-                             .Take(pagesize)
-                             .Include(p => p.ProductCategoryProducts)
-                             .ThenInclude(pc => pc.Category)
-                             .ToListAsync();
+            //var productInPage = await products.Skip((currentPage - 1) * pagesize)
+            //                 .Take(pagesize)
+            //                 .Include(p => p.ProductCategoryProducts)
+            //                 .ThenInclude(pc => pc.Category)
+            //                 .ToListAsync();
 
-            return View(productInPage);
+            return View(products.ToList());
+        }
+        [HttpPost]
+        public IActionResult Index(decimal? lowAmount, decimal? largeAmount)
+        {
+            var products = _context.Products.Include(c => c.ProductCategoryProducts).ThenInclude(pc => pc.Category).OrderByDescending(p => p.DateUpdated)
+                .Where(c => c.Price >= lowAmount && c.Price <= largeAmount).ToList();
+            if (lowAmount == null || largeAmount == null)
+            {
+                products = _context.Products.Include(c => c.ProductCategoryProducts).ThenInclude(pc => pc.Category).OrderByDescending(p => p.DateUpdated).ToList();
+            }
+            return View(products);
         }
 
         // GET: Product/ProductManage/Details/5
@@ -115,7 +131,7 @@ namespace MuiltyShop.Areas.Product.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Description,Slug,Content,Published,CategoryIDs, Price")] CreateProductModel product)
+        public async Task<IActionResult> Create([Bind("Title,Description,Slug,Content,Published,CategoryIDs, Price")] CreateProductModel product, IFormFile image)
         {
             var categories = await _context.CategoryProducts.ToListAsync();
             ViewData["categories"] = new MultiSelectList(categories, "Id", "Title");
@@ -135,6 +151,23 @@ namespace MuiltyShop.Areas.Product.Controllers
 
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    var file1 = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + Path.GetExtension(image.FileName);
+
+                    var file = Path.Combine("Uploads", "Products", file1);
+
+                    using (var filestream = new FileStream(file, FileMode.Create))
+                    {
+                        await image.CopyToAsync(filestream);
+                    }
+                    product.Image = file1;
+                }
+                if (image == null)
+                {
+                    product.Image = "nophoto.png";
+                }
+
                 var user = await _userManager.GetUserAsync(this.User);
                 product.DateCreated = product.DateUpdated = DateTime.Now;
                 product.AuthorId = user.Id;
@@ -186,7 +219,8 @@ namespace MuiltyShop.Areas.Product.Controllers
                 Slug = product.Slug,
                 Published = product.Published,
                 CategoryIDs = product.ProductCategoryProducts.Select(pc => pc.CategoryID).ToArray(),
-                Price = product.Price
+                Price = product.Price,
+                Image = product.Image
             };
 
             var categories = await _context.CategoryProducts.ToListAsync();
@@ -200,7 +234,7 @@ namespace MuiltyShop.Areas.Product.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Title,Description,Slug,Content,Published,CategoryIDs, Price")] CreateProductModel product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Title,Description,Slug,Content,Published,CategoryIDs, Price")] CreateProductModel product, IFormFile image)
         {
             if (id != product.ProductId)
             {
@@ -226,7 +260,6 @@ namespace MuiltyShop.Areas.Product.Controllers
             {
                 try
                 {
-
                     var productUpdate = await _context.Products.Include(p => p.ProductCategoryProducts).FirstOrDefaultAsync(p => p.ProductId == id);
                     if (productUpdate == null)
                     {
@@ -240,6 +273,23 @@ namespace MuiltyShop.Areas.Product.Controllers
                     productUpdate.Slug = product.Slug;
                     productUpdate.DateUpdated = DateTime.Now;
                     productUpdate.Price = product.Price;
+
+                    if (image != null)
+                    {
+                        var file1 = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + Path.GetExtension(image.FileName);
+
+                        var file = Path.Combine("Uploads", "Products", file1);
+
+                        using (var filestream = new FileStream(file, FileMode.Create))
+                        {
+                            await image.CopyToAsync(filestream);
+                        }
+                        productUpdate.Image = file1;
+                    }
+                    if (image == null)
+                    {
+                        productUpdate.Image = "nophoto.png";
+                    }
 
                     // Update PostCategory
                     if (product.CategoryIDs == null) product.CategoryIDs = new int[] { };
@@ -316,6 +366,15 @@ namespace MuiltyShop.Areas.Product.Controllers
             if (product == null)
             {
                 return NotFound();
+            }
+
+            if (product.Image != null)
+            {
+                _context.Remove(product.Image);
+                _context.SaveChanges();
+
+                var filename = "Uploads/Products/" + product.Image;
+                System.IO.File.Delete(filename);
             }
 
             _context.Products.Remove(product);

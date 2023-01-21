@@ -32,6 +32,8 @@ namespace MuiltyShop.Models.Product
 
         [Display(Name = "Xuất bản")]
         public bool Published { set; get; }
+        [Display(Name = "Images")]
+        public string Image { set; get; }
         // [Required]
         [Display(Name = "Người đăng")]
         public string AuthorId { set; get; }
